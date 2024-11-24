@@ -1,0 +1,14 @@
+1,Pizza,Delicious cheese pizza,8.99
+2,Burger,Juicy beef burger,5.49
+3,Pasta,Italian pasta with sauce,7.99
+4,Salad,Fresh garden salad,4.49
+5,Salad, Cesar salad,5.5
+6,Soft Drink,Tonic,3.4
+7,Soft Drink,Soda,2.65
+8,Juice,Pineapple jus,3.5
+9,Juice,Orange jus,3.2
+10,Hot Drink,Dargeling,2.75
+11,Hot Drink,EarlGrey,2.25
+12,Soft Drink,Perrier,3
+13,Soft Drrink,Cola,1.5
+14,Coffee,Rich aromatic coffee,2.99
