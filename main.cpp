@@ -5,8 +5,8 @@
   It allows the user to perform various operations such as managing the menu,
   placing orders, processing them, and calculating total revenue from orders.
 
-  Input: User choices for various menu operations and inputs such as item
-         details, customer names, and order IDs.
+  Input:  User choices for various menu operations and inputs such as item
+          details, customer names, and order IDs.
   Output: Displays the menu, order status, revenue reports, and various
           success/error messages.
 
@@ -36,6 +36,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <limits>
+#include <ctime>
+#include <sstream>
 
 using namespace std;
 
@@ -434,7 +436,20 @@ void calculateTotalRevenue(CompletedOrderStack &completedOrder){
  */
 void saveCompletedOrdersToFile(CompletedOrderStack &completedOrder){
     cout << "Saving completed orders to file..." << endl;
-    completedOrder.saveToFile("completed_orders.txt");
+
+    // Get the current date
+    time_t now = time(0);
+    tm *time = localtime(&now);
+
+    // Create the file name with the date
+    stringstream filename;
+    filename << "completed_orders (" 
+             << (1900 + time->tm_year) << "-" 
+             << (time->tm_mon + 1) << "-" 
+             << time->tm_mday << ").txt";
+
+    completedOrder.saveToFile(filename.str());
+
     cout << "Orders saved successfully!" << endl;
 }
 

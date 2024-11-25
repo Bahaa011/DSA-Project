@@ -103,15 +103,34 @@ void CompletedOrderStack::saveToFile(const string& filename) const {
         return;
     }
     
-    NodePtr current = top;
-    
-    while(current != NULL){
-        file << current->data; // Write to the file
-        
-        file << "Total Price: $"<< current->data.calculateTotalAmount() << endl << endl;
+    // Traverse the stack and write each order's details
+    Node* current = top; // Assuming the stack is implemented as a linked list with a `top` pointer
+
+    while (current != nullptr) {
+        const Order& order = current->data; // Access the order stored in the node
+
+        // Write Order ID and Customer Name
+        file << order.getOrderId() << "," << order.getCustomerName() << ",";
+
+        // Write items as a comma-separated list within quotes
+        file << "\"";
+        for (int i = 0; i < order.getItemCount(); ++i) { 
+            const MenuItem& item = order.getItem(i);
+            file << item.getName();
+            if (i < order.getItemCount() - 1) {
+                file << "; "; // Separate items with a semicolon
+            }
+        }
+        file << "\","; // Close quotes
+
+        // Write total price
+        file << order.calculateTotalAmount() << endl;
+
+        // Move to the next node
         current = current->next;
     }
 
+    // Write total revenue of all orders
     file << "Total amount revenue is: $" << calculateTotalRevenue() << endl;
     
     file.close(); // Close the file
