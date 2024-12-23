@@ -29,20 +29,6 @@
 using namespace std;
 
 class Menu {
-private:
-    MenuItem* array;  // Dynamic array of MenuItem objects
-    int capacity;     // Maximum capacity of the array
-    int size;         // Current number of items in the Menu
-
-    void resize();
-    /*------------------------------------------------------------------------
-      Resize the dynamic array when it reaches capacity.
-
-      Precondition:  None.
-      Postcondition: The array's capacity is doubled, and existing items
-                     are copied to the new array.
-    ------------------------------------------------------------------------*/
-
 public:
     /***** Constructor and Destructor *****/
     Menu(int capacity = 10);
@@ -133,6 +119,20 @@ public:
       Precondition:  ostream out is open.
       Postcondition: Outputs the Menu's contents, including all items, in
                      a readable format.
+    ------------------------------------------------------------------------*/
+
+private:
+    MenuItem* array;  // Dynamic array of MenuItem objects
+    int capacity;     // Maximum capacity of the array
+    int size;         // Current number of items in the Menu
+
+    void resize();
+    /*------------------------------------------------------------------------
+      Resize the dynamic array when it reaches capacity.
+
+      Precondition:  None.
+      Postcondition: The array's capacity is doubled, and existing items
+                     are copied to the new array.
     ------------------------------------------------------------------------*/
 };
 

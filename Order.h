@@ -29,25 +29,9 @@
 using namespace std;
 
 #include "MenuItem.h"
+#include <cassert>
 
 class Order {
-private:
-    int orderId;               // Unique ID for the order
-    string customerName;       // Name of the customer who placed the order
-    MenuItem* items;           // Dynamic array of items in the order
-    int size;                  // Current number of items in the order
-    int capacity;              // Maximum capacity of the dynamic array
-    char status;               // Status of the order ('P' = Pending, 'C' = Completed)
-
-    void resize();
-    /*------------------------------------------------------------------------
-      Resize the dynamic array of items when it reaches capacity.
-
-      Precondition:  None.
-      Postcondition: The array's capacity is doubled, and existing items
-                     are copied to the new array.
-    ------------------------------------------------------------------------*/
-
 public:
     /***** Constructors and Destructor *****/
     Order(int id = 0, const string& customerName = "");
@@ -186,6 +170,23 @@ public:
       Precondition:  ostream out is open.
       Postcondition: Outputs the Order's ID, customer name, status, items, 
                      and total amount in a readable format.
+    ------------------------------------------------------------------------*/
+
+private:
+    int orderId;               // Unique ID for the order
+    string customerName;       // Name of the customer who placed the order
+    MenuItem* items;           // Dynamic array of items in the order
+    int size;                  // Current number of items in the order
+    int capacity;              // Maximum capacity of the dynamic array
+    char status;               // Status of the order ('P' = Pending, 'C' = Completed)
+
+    void resize();
+    /*------------------------------------------------------------------------
+      Resize the dynamic array of items when it reaches capacity.
+
+      Precondition:  None.
+      Postcondition: The array's capacity is doubled, and existing items
+                     are copied to the new array.
     ------------------------------------------------------------------------*/
 };
 

@@ -30,29 +30,7 @@
 using namespace std;
 
 class OrderQueue {
-private:
-    /***** Nested Node Class *****/
-    class Node {
-    public:
-        Order data;  // The Order stored in this Node
-        Node* next;  // Pointer to the next Node in the queue
-
-        Node(const Order& data) : data(data), next(NULL) {};
-        /*--------------------------------------------------------------------
-          Construct a Node with the given Order.
-
-          Precondition:  None.
-          Postcondition: A Node is created with the specified Order and the 
-                         next pointer initialized to NULL.
-        --------------------------------------------------------------------*/
-    };
-
-    Node* front;  // Pointer to the first Node in the queue
-    Node* rear;   // Pointer to the last Node in the queue
-
 public:
-    typedef Node* NodePtr;
-
     /***** Constructor and Destructor *****/
     OrderQueue();
     /*--------------------------------------------------------------------
@@ -114,6 +92,29 @@ public:
       Postcondition: Outputs all Orders in the queue to the console, starting
                      from the front.
     --------------------------------------------------------------------*/
+
+private:
+    /***** Nested Node Class *****/
+    class Node {
+    public:
+        Order data;  // The Order stored in this Node
+        Node* next;  // Pointer to the next Node in the queue
+
+        Node(const Order& data) : data(data), next(NULL) {};
+        /*--------------------------------------------------------------------
+          Construct a Node with the given Order.
+
+          Precondition:  None.
+          Postcondition: A Node is created with the specified Order and the 
+                         next pointer initialized to NULL.
+        --------------------------------------------------------------------*/
+    };
+
+    typedef Node* NodePtr;
+
+    NodePtr front;  // Pointer to the first Node in the queue
+    NodePtr rear;   // Pointer to the last Node in the queue
+
 };
 
 /***** Overloaded Operators *****/

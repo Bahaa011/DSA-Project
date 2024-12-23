@@ -1,0 +1,4 @@
+3,test3,"Soft Drink:2.65&Juice:3.5&Juice:3.2",9.35
+2,test2,"Salad:4.49&Salad:5.5&Soft Drink:3.4",13.39
+1,test1,"Pizza:8.99&Burger:5.49&Pasta:7.99",22.47
+Total revenue is: $45.21

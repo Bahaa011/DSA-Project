@@ -22,12 +22,6 @@
 using namespace std;
 
 class MenuItem {
-private:
-    int id;                 // Unique ID for the menu item
-    string name;            // Name of the menu item
-    string description;     // Description of the menu item
-    double price;           // Price of the menu item
-
 public:
     /***** Constructor *****/
     MenuItem(int id = 0, const string& name = "undefined",
@@ -115,6 +109,12 @@ public:
       Postcondition: Outputs the MenuItem's ID, name, description, and price
                      in a readable format.
     ------------------------------------------------------------------------*/
+    
+private:
+    int id;                 // Unique ID for the menu item
+    string name;            // Name of the menu item
+    string description;     // Description of the menu item
+    double price;           // Price of the menu item
 };
 
 #endif // MENUITEM_H

@@ -31,7 +31,7 @@ Order::Order(const Order& other) {
 
 //--- Definition of Order destructor
 Order::~Order(){
-    delete [] items;
+    delete [] items; // Free the memory
 }
 
 //--- Definition of resize()
@@ -74,10 +74,7 @@ int Order::getItemCount() const {
 
 //--- Definition of getItem()
 MenuItem Order::getItem(int i) const {
-    if (i < 0 || i >= size) {
-        MenuItem garbage;
-        return garbage;
-    }
+    assert(i >= 0 && i < size);
     return items[i];
 }
 
@@ -155,6 +152,7 @@ ostream& operator<<(ostream& out, const Order& order){
         << order.customerName << endl 
         << "Items: " << endl;
 
+    // Iterate through all items of an order and display them
     for (int i = 0; i < order.size; i++) {
         out << "  - " << order.items[i].getName() << " ($" 
             << order.items[i].getPrice() << ")" << endl;

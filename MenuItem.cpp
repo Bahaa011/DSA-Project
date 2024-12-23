@@ -8,7 +8,8 @@ using namespace std;
 #include "MenuItem.h"
 
 //--- Definition of MenuItem constructor
-MenuItem::MenuItem(int id, const string& name, const string& description, double price){
+MenuItem::MenuItem(int id, const string& name,
+     const string& description, double price){
     setId(id);
     setName(name);
     setDescription(description);
@@ -67,6 +68,8 @@ void MenuItem::setPrice(double price){
 
 //--- Definition of operator<<
 ostream& operator<<(ostream& out, const MenuItem& menuItem){
-    out << "ID: " << menuItem.id << ", Name: " << menuItem.name << ", Price: $" << menuItem.price << endl;
+    out << "ID: " << menuItem.id << ", Name: " 
+        << menuItem.name << ", Price: $" << menuItem.price << endl;
+        
     return out;
 }

@@ -86,6 +86,7 @@ double CompletedOrderStack::calculateTotalRevenue() const {
     double total = 0;
     NodePtr current = top;
     
+    // Iterate through the stack and calculate the total
     while(current != NULL){
         total += current->data.calculateTotalAmount();
         current = current->next;
@@ -104,7 +105,7 @@ void CompletedOrderStack::saveToFile(const string& filename) const {
     }
     
     // Traverse the stack and write each order's details
-    Node* current = top; // Assuming the stack is implemented as a linked list with a `top` pointer
+    Node* current = top;
 
     while (current != nullptr) {
         const Order& order = current->data; // Access the order stored in the node
@@ -112,13 +113,13 @@ void CompletedOrderStack::saveToFile(const string& filename) const {
         // Write Order ID and Customer Name
         file << order.getOrderId() << "," << order.getCustomerName() << ",";
 
-        // Write items as a comma-separated list within quotes
+        // Write items name and price seperated by colon and encased in quotes
         file << "\"";
         for (int i = 0; i < order.getItemCount(); ++i) { 
             const MenuItem& item = order.getItem(i);
-            file << item.getName();
+            file << item.getName() << ":" << item.getPrice();
             if (i < order.getItemCount() - 1) {
-                file << "; "; // Separate items with a semicolon
+                file << "&"; // Separate items with a ampersand
             }
         }
         file << "\","; // Close quotes
@@ -131,7 +132,7 @@ void CompletedOrderStack::saveToFile(const string& filename) const {
     }
 
     // Write total revenue of all orders
-    file << "Total amount revenue is: $" << calculateTotalRevenue() << endl;
+    file << "Total revenue is: $" << calculateTotalRevenue() << endl;
     
     file.close(); // Close the file
 }
@@ -145,6 +146,7 @@ void CompletedOrderStack::display() const {
         return;
     }
     
+    // Iterate through the stack and display every completed order
     NodePtr current = top;
     while(current != NULL){
         cout << current->data;

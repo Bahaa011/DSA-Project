@@ -110,7 +110,8 @@ int getChoice() {
 
         // Check if input is valid and in the range
         if (cin.fail() || choice < 1 || choice > 11) {
-            cout << "Invalid input. Please enter a number between 1 and 11." << endl;
+            cout << "Invalid input. Please enter a number between 1 and 11." 
+                << endl;
 
             // Clear error flags and discard invalid input
             cin.clear();
@@ -128,7 +129,8 @@ int getChoice() {
  * Purpose:
  *   Displays the main menu options for the restaurant order management system.
  * Functionality:
- *   - Prints numbered menu options (1–11) that correspond to the program's main operations.
+ *   - Prints numbered menu options (1–11) 
+ *          that correspond to the program's main operations.
  * Input: None
  * Output: Displays menu options on the console.
  * Usage: Helps the user navigate through the system functionalities.
@@ -171,7 +173,7 @@ void addMenuItem(int &itemId, Menu &menu){
 
     // Prompt for item's name
     cout << "Enter item name: ";
-    cin.ignore();  // Clear the newline character
+    cin.ignore(); 
     getline(cin, name);
     while (name.empty()) {
         cout << "Item name cannot be empty. Please enter a valid name: ";
@@ -180,10 +182,11 @@ void addMenuItem(int &itemId, Menu &menu){
     
     // Prompt for item's description
     cout << "Enter description: ";
-    cin.ignore();  // Clear the newline character
+    cin.ignore();
     getline(cin, description);
     while (description.empty()) {
-        cout << "Item description cannot be empty. Please enter a valid description: ";
+        cout << "Item description cannot be empty." 
+                << "Please enter a valid description: ";
         getline(cin, description);
     }
 
@@ -302,7 +305,7 @@ void addNewOrder(int &orderId, OrderQueue &order, Menu &menu){
         }
 
         MenuItem item = menu.getItemById(id);
-        if (item.getId() != -1) { // Assuming invalid items return an ID of -1
+        if (item.getId() != -1) { // Invalid items return an ID of -1
             o.addItem(item);
         } else {
             cout << "Item with ID " << id << " not found." << endl;
@@ -339,7 +342,7 @@ void processNextOrder(OrderQueue &order, CompletedOrderStack &completedOrder){
         Order nextOrder = order.dequeue();
         cout << "Processing order for "<< nextOrder.getCustomerName() << "..." << endl;
 
-        // Move it to Completed Orders
+        // Move it to Completed Orders stack
         completedOrder.push(nextOrder);
         cout << "Order processed succesfully!" << endl;
     }
@@ -414,7 +417,7 @@ void calculateTotalRevenue(CompletedOrderStack &completedOrder){
     cout << "--- Total Revenue ---" << endl;
 
     int size = completedOrder.size();
-    for (int i = 0; i < size; i++) {  // Iterate through completed orders
+    for (int i = 0; i < size; i++) {
         Order o = completedOrder.getOrder(size - i - 1);  // Get each completed order
         double orderTotal = o.calculateTotalAmount();  // Calculate the total for the order
         cout << "Order " << i + 1 << ": $" << orderTotal << endl;

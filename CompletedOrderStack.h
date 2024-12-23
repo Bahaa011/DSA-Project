@@ -33,28 +33,7 @@
 using namespace std;
 
 class CompletedOrderStack {
-private:
-    /***** Nested Node Class *****/
-    class Node {
-    public:
-        Order data;  // The Order stored in this Node
-        Node* next;  // Pointer to the next Node in the stack
-
-        Node(const Order& data) : data(data), next(NULL) {}
-        /*--------------------------------------------------------------------
-          Construct a Node with the given Order.
-
-          Precondition:  None.
-          Postcondition: A Node is created with the specified Order, and the 
-                         next pointer is initialized to NULL.
-        --------------------------------------------------------------------*/
-    };
-
-    Node* top;  // Pointer to the top Node in the stack
-
 public:
-    typedef Node* NodePtr;
-
     /***** Constructor and Destructor *****/
     CompletedOrderStack();
     /*--------------------------------------------------------------------
@@ -142,6 +121,27 @@ public:
       Postcondition: All Orders in the stack are written to the file, starting
                      from the top.
     --------------------------------------------------------------------*/
+
+private:
+    /***** Nested Node Class *****/
+    class Node {
+    public:
+        Order data;  // The Order stored in this Node
+        Node* next;  // Pointer to the next Node in the stack
+
+        Node(const Order& data) : data(data), next(NULL) {}
+        /*--------------------------------------------------------------------
+          Construct a Node with the given Order.
+
+          Precondition:  None.
+          Postcondition: A Node is created with the specified Order, and the 
+                         next pointer is initialized to NULL.
+        --------------------------------------------------------------------*/
+    };
+
+    typedef Node* NodePtr;
+    
+    NodePtr top;  // Pointer to the top Node in the stack
 };
 
 /***** Overloaded Operators *****/

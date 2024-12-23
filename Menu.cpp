@@ -33,11 +33,11 @@ void Menu::resize(){
 MenuItem Menu::getItemById(int id) {
     for(int i = 0; i < size; i++){
         if(id == array[i].getId()){
-            return array[i];
+            return array[i]; // Return the item
         }
     }
 
-    return MenuItem(-1, "", "", 0.99);
+    return MenuItem(-1, "", "", 0.99); // Return MenuItem with ID of -1
 }
 
 //--- Definition of addItem()
@@ -53,6 +53,7 @@ void Menu::addItem(const MenuItem& item){
 bool Menu::deleteItem(int id){
     int index = -1;
     
+    // Search for item index
     for(int i = 0; i < size; i++){
         if(id == array[i].getId()){
             index = i;
@@ -60,9 +61,11 @@ bool Menu::deleteItem(int id){
         }
     }
     
+    // If not found return false
     if(index == -1)
         return false;
     
+    // Shift elements
     for(int i = index; i < size - 1; i++){
         array[i] = array[ i + 1 ];
     }
@@ -103,7 +106,6 @@ void Menu::loadFromFile(const string& filename) {
         getline(ss, description, ','); // Read description
         getline(ss, priceStr);    // Read price
 
-        // Convert id and price from strings to appropriate types
         int id = stoi(idStr); // Convert ID from string to integer
         double price = stod(priceStr); // Convert price from string to double
 
@@ -124,6 +126,7 @@ void Menu::saveToFile(const string& filename) const {
         return;
     }
 
+    // Write all menu item details seperated by a comma
     for(int i = 0; i < size; i++){
         file << array[i].getId() << "," << array[i].getName() << ","
                 << array[i].getDescription() << "," 

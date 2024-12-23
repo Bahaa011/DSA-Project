@@ -114,6 +114,7 @@ void OrderQueue::display() const {
         return;
     }
     
+    // Iterate through the queue displaying each order
     NodePtr current = front;
     while(current != NULL){
         cout << current->data;
